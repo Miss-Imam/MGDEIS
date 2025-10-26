@@ -662,121 +662,119 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
                 st.error(f"Error creating network graph: {str(e)}")
         
 
-    
+
     # ----------------------------------------------------------------------------
-    # 6) Partnership Network Sankey
+    # 6) Partnership Network Graph
     # ----------------------------------------------------------------------------
-    # Partnership Network
 
     st.markdown("---")
     st.markdown("<h4 style='text-align: center;'>Partnership Network</h4>", unsafe_allow_html=True)
 
-    # Center align the Sankey diagram using columns
-    col_left, col_center, col_right = st.columns([0.5, 10, 0.5])
+    if not partnership_df.empty and {"entity_key", "partner_name"}.issubset(partnership_df.columns):
+        try:
+            import networkx as nx
 
-    with col_center:
-        if not partnership_df.empty and {"entity_key", "partner_name"}.issubset(partnership_df.columns):
-            flows = (partnership_df
-                    .dropna(subset=["entity_key", "partner_name"])
-                    .groupby(["entity_key", "partner_name"])
-                    .size()
-                    .reset_index(name="value"))
+            # Create network graph
+            G = nx.Graph()
 
-            if not flows.empty:
-                # Keep entities (left) and partners (right) separated
-                left_entities = flows["entity_key"].astype(str).unique().tolist()
-                right_partners = flows["partner_name"].astype(str).unique().tolist()
-                nodes = left_entities + right_partners
+            # Define entity colors
+            entity_colors = {
+                "MDEC": "#F59E0B",
+                "MCMC": "#8A63FF",
+                "MINISTRYOFDIGITAL": "#F45AA4",
+                "MOD": "#F45AA4",
+                "MOHE": "#10B981",
+                "MYDIGITAL": "#3B82F6",
+            }
 
-                # Indices
-                idx = {n: i for i, n in enumerate(nodes)}
+            # Add edges from partnerships
+            for _, row in partnership_df.dropna(subset=["entity_key", "partner_name"]).iterrows():
+                G.add_edge(row["entity_key"], row["partner_name"])
 
-                source = flows["entity_key"].astype(str).map(idx).tolist()
-                target = flows["partner_name"].astype(str).map(idx).tolist()
-                value = flows["value"].astype(int).tolist()
+            # Use spring layout for positioning
+            pos = nx.spring_layout(G, k=2, iterations=50, seed=42)
 
-                # Assign specific colors to known entities, then use palette for others
-                known_entity_colors = {
-                    "MDEC": "#F59E0B",           # Orange
-                    "MCMC": "#8A63FF",           # Purple
-                    "MINISTRYOFDIGITAL": "#F45AA4",  # Pink
-                    "MOD": "#F45AA4",            # Pink (same as Ministry of Digital)
-                    "MOHE": "#10B981",           # Green
-                    "MYDIGITAL": "#3B82F6",      # Blue
-                }
-
-                # Fallback palette for any other entities
-                palette = [
-                    "#6366F1", "#EC4899", "#06B6D4", "#84CC16",
-                    "#EF4444", "#14B8A6", "#A855F7", "#22C55E", "#0EA5E9"
-                ]
-
-                entity_colors = {}
-                palette_index = 0
-                for ent in left_entities:
-                    if ent in known_entity_colors:
-                        entity_colors[ent] = known_entity_colors[ent]
-                    else:
-                        entity_colors[ent] = palette[palette_index % len(palette)]
-                        palette_index += 1
-
-                # Partner nodes: subtle grey so entity colors pop
-                partner_color = "rgba(107, 114, 128, 0.75)"
-
-                node_colors = [entity_colors[e] for e in left_entities] + [partner_color] * len(right_partners)
-
-                # Link color strategy: color links by their entity (left node) with alpha
-                link_colors = []
-                for s, v in zip(source, value):
-                    left_name = nodes[s]
-                    base = entity_colors.get(left_name, "#6366F1")
-                    # apply alpha ~0.35
-                    # convert hex to rgba
-                    if base.startswith("#") and len(base) == 7:
-                        r = int(base[1:3], 16)
-                        g = int(base[3:5], 16)
-                        b = int(base[5:7], 16)
-                        link_colors.append(f"rgba({r},{g},{b},0.35)")
-                    else:
-                        link_colors.append("rgba(99,102,241,0.35)")
-
-                # Don't wrap labels - keep them clean and readable
-                node_labels = left_entities + right_partners
-
-                fig = go.Figure(data=[go.Sankey(
-                    arrangement="snap",
-                    node=dict(
-                        label=node_labels,
-                        pad=20,
-                        thickness=20,
-                        line=dict(color="rgba(0,0,0,0.2)", width=1),
-                        color=node_colors
-                    ),
-                    link=dict(
-                        source=source,
-                        target=target,
-                        value=value,
-                        color=link_colors
+            # Get node positions
+            edge_trace = []
+            for edge in G.edges():
+                x0, y0 = pos[edge[0]]
+                x1, y1 = pos[edge[1]]
+                edge_trace.append(
+                    go.Scatter(
+                        x=[x0, x1, None],
+                        y=[y0, y1, None],
+                        mode='lines',
+                        line=dict(width=0.5, color='#CBD5E1'),
+                        hoverinfo='none',
+                        showlegend=False
                     )
-                )])
-
-                # Clean font settings for better readability
-                fig.update_layout(
-                    font=dict(
-                        family="Arial, sans-serif",
-                        size=11,
-                        color="#1F2937"
-                    ),
-                    height=500,
-                    margin=dict(l=10, r=150, t=20, b=20),
                 )
 
-                # Render full width
-                st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
-            else:
-                st.info("No partnership flows available")
-        else:
-            st.info("Insufficient columns for partnership network (need entity_key & partner_name)")
+            # Create node trace
+            node_x = []
+            node_y = []
+            node_colors = []
+            node_text = []
+            node_sizes = []
+
+            entities = partnership_df['entity_key'].dropna().unique().tolist()
+
+            for node in G.nodes():
+                x, y = pos[node]
+                node_x.append(x)
+                node_y.append(y)
+
+                # Color and size based on whether it's an entity or partner
+                if node in entities:
+                    node_colors.append(entity_colors.get(node, "#6366F1"))
+                    node_sizes.append(30)
+                else:
+                    node_colors.append("#9CA3AF")
+                    node_sizes.append(15)
+
+                # Count connections
+                connections = len(list(G.neighbors(node)))
+                node_text.append(f"{node}<br>{connections} connections")
+
+            node_trace = go.Scatter(
+                x=node_x,
+                y=node_y,
+                mode='markers+text',
+                text=[node for node in G.nodes()],
+                textposition="top center",
+                textfont=dict(size=10, color='#1F2937'),
+                hovertext=node_text,
+                hoverinfo='text',
+                marker=dict(
+                    size=node_sizes,
+                    color=node_colors,
+                    line=dict(width=2, color='white')
+                ),
+                showlegend=False
+            )
+
+            # Create figure
+            fig = go.Figure(data=edge_trace + [node_trace])
+
+            fig.update_layout(
+                showlegend=False,
+                hovermode='closest',
+                margin=dict(l=0, r=0, t=0, b=0),
+                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                height=650,
+                paper_bgcolor='white',
+                plot_bgcolor='white'
+            )
+
+            st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
+
+        except ImportError:
+            st.error("NetworkX library required. Install with: pip install networkx")
+        except Exception as e:
+            st.error(f"Error creating network graph: {str(e)}")
+    else:
+        st.info("No partnership data available")
 
     # ----------------------------------------------------------------------------
     # 7) Procurement Categories
