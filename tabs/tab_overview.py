@@ -721,32 +721,17 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
                 else:
                     link_colors.append("rgba(99,102,241,0.35)")
 
-            # Wrap long labels for partners; entities can remain uppercase/compact
-            def wrap_label(s, width=18):
-                s = str(s)
-                words, lines, line = s.split(), [], []
-                for w in words:
-                    if sum(len(x) for x in line) + len(line) + len(w) > width:
-                        lines.append(" ".join(line))
-                        line = [w]
-                    else:
-                        line.append(w)
-                if line:
-                    lines.append(" ".join(line))
-                return "\n".join(lines)
-
-            node_labels = left_entities + [wrap_label(n, 18) for n in right_partners]
+            # Don't wrap labels - keep them clean and readable
+            node_labels = left_entities + right_partners
 
             fig = go.Figure(data=[go.Sankey(
                 arrangement="snap",
                 node=dict(
                     label=node_labels,
-                    pad=24,
-                    thickness=16,
-                    line=dict(color="rgba(0,0,0,0.25)", width=1),
-                    color=node_colors,
-                    # Make labels bold and black while preserving size/style
-            
+                    pad=20,
+                    thickness=20,
+                    line=dict(color="rgba(0,0,0,0.2)", width=1),
+                    color=node_colors
                 ),
                 link=dict(
                     source=source,
@@ -756,11 +741,15 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
                 )
             )])
 
-            # Set global font to black and slightly bolder appearance
+            # Clean font settings for better readability
             fig.update_layout(
-                font=dict(color="black", size=12),  # keep size & style, enforce black
-                height=450,
-                margin=dict(l=30, r=30, t=20, b=20),
+                font=dict(
+                    family="Arial, sans-serif",
+                    size=11,
+                    color="#1F2937"
+                ),
+                height=500,
+                margin=dict(l=10, r=150, t=20, b=20),
             )
 
             # Render full width
