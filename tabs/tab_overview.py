@@ -219,7 +219,7 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
         )
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown("---")
     # ----------------------------------------------------------------------------
     # 4) Policies per Entity & Partnership Types Breakdown
     # ----------------------------------------------------------------------------
@@ -227,7 +227,7 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
 
     # Policies per Entity — Pull from entity_policy_alignment.csv
     with col1:
-        st.markdown('<div class="section-card">', unsafe_allow_html=True)
+        
         st.markdown("<h4 style='text-align: center;'>Policies per Entity</h4>", unsafe_allow_html=True)
 
         # Count policies per entity from entity_policy_alignment.csv
@@ -295,11 +295,11 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
         )
         
         st.plotly_chart(fig, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        
 
     # Partnership Types Breakdown — HARDCODED from partnership_network.csv data
     with col2:
-        st.markdown('<div class="section-card">', unsafe_allow_html=True)
+        
         st.markdown("<h4 style='text-align: center;'>Partnership Types Breakdown</h4>", unsafe_allow_html=True)
         
         # Based on actual partnership_network.csv data (37 rows total), matched to Chart.js spec:
@@ -368,7 +368,7 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
         )
         
         st.plotly_chart(fig, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+      
     
  # ----------------------------------------------------------------------------
     # 5) Total Departments per Entity and Cross Entity Collaboration
@@ -377,7 +377,7 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
     
 # Total Departments per Entity 
     with col1:
-        st.markdown('<div class="section-card">', unsafe_allow_html=True)
+        st.markdown("---")
         st.markdown("<h4 style='text-align: center;'>Total Departments per Entity</h4>", unsafe_allow_html=True)
         
         if nodes_df.empty or 'type' not in nodes_df.columns:
@@ -509,12 +509,12 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
                             
                             st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
         
-        st.markdown('</div>', unsafe_allow_html=True)
+
    
     # Cross-Entity Collaboration Network Graph
     with col2:
 
-        st.markdown('<div class="section-card">', unsafe_allow_html=True)
+        st.markdown("---")
         st.markdown("<h4 style='text-align: center;'>Cross-Entity Collaboration Network</h4>", unsafe_allow_html=True)
         
         if policy_align_df.empty:
@@ -661,14 +661,14 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
             except Exception as e:
                 st.error(f"Error creating network graph: {str(e)}")
         
-        st.markdown('</div>', unsafe_allow_html=True)
+
     
     # ----------------------------------------------------------------------------
     # 6) Partnership Network Sankey
     # ----------------------------------------------------------------------------
     # Partnership Network
-    
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
+
+    st.markdown("---")
     st.markdown("<h4 style='text-align: center;'>Partnership Network</h4>", unsafe_allow_html=True)
 
     if not partnership_df.empty and {"entity_key", "partner_name"}.issubset(partnership_df.columns):
@@ -769,13 +769,12 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
             st.info("No partnership flows available")
     else:
         st.info("Insufficient columns for partnership network (need entity_key & partner_name)")
-    st.markdown("</div>", unsafe_allow_html=True)
-    
+
     # ----------------------------------------------------------------------------
     # 7) Procurement Categories
     # ----------------------------------------------------------------------------
-    
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
+
+    st.markdown("---")
     st.markdown("<h4 style='text-align: center;'>Procurement Categories</h4>", unsafe_allow_html=True)
 
     if not procurement_df.empty and 'procurement_category' in procurement_df.columns:
@@ -812,14 +811,12 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
     else:
         st.info("No procurement data available or 'procurement_category' column missing")
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
     # ----------------------------------------------------------------------------
     # 8) AI Readiness Scorecard (robust numeric parsing + normalized KPI)
     # ----------------------------------------------------------------------------
     # SECTION 7: AI READINESS SCORECARD - Pull from ai_alignment.csv
 
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
+    st.markdown("---")
     st.markdown("<h4 style='text-align: left;'>AI Readiness Scorecard</h4>", unsafe_allow_html=True)
 
     if not voice_ai_df.empty and 'entity' in voice_ai_df.columns:
@@ -884,12 +881,10 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
     else:
         st.info("No AI alignment data available")
 
-    st.markdown('</div>', unsafe_allow_html=True)
-
     # ----------------------------------------------------------------------------
     # 9) Ecosystem Maturity — Polar Area
     # ----------------------------------------------------------------------------
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
+    st.markdown("---")
     st.markdown("<h4 style='text-align: center;'>Ecosystem Maturity</h4>", unsafe_allow_html=True)
 
     # Policy Maturity
@@ -988,5 +983,4 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
             </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
