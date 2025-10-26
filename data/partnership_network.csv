@@ -1,0 +1,38 @@
+entity,partner_type,partner_name,relationship_description,confidence_score
+MOHE,Tech Vendor,Microsoft,Learning Management Systems,95%
+MOHE,Tech Vendor,Google Workspace,Learning Management Systems,95%
+MOHE,Local Supplier,Various Universities,Direct Procurement,90%
+MyDIGITAL,Strategic Partner,World Economic Forum,C4IR Malaysia (first in SE Asia),95%
+MyDIGITAL,Strategic Partner,Asia School of Business,Executive Digital Leadership Programme,90%
+MyDIGITAL,Implementation Partner,MDEC,Digital Economy Execution,95%
+MyDIGITAL,Implementation Partner,CyberSecurity Malaysia,Security Initiatives,95%
+MyDIGITAL,Implementation Partner,JDN,National Digital Department,95%
+MyDIGITAL,Tech Partner,Microsoft,Initiatives Support,95%
+MyDIGITAL,Tech Partner,Google,Initiatives Support,95%
+MDEC,Tech Partner,Microsoft Azure,Cloud Partnerships,95%
+MDEC,Tech Partner,Google Cloud,Cloud Partnerships,95%
+MDEC,Tech Partner,AWS,Cloud Partnerships,95%
+MDEC,Telecom Partner,Huawei,5G Equipment,95%
+MDEC,Telecom Partner,Ericsson,5G Infrastructure,95%
+MDEC,Telecom Partner,Nokia,Network Equipment,95%
+MDEC,Telecom Partner,ZTE,Network Systems,90%
+MDEC,Local Telecom,Telekom Malaysia,Backbone Services,95%
+MDEC,Investment Partner,Singapore-based Investors,RM13.91B MD Status,85%
+Ministry of Digital,Tech Partner,Microsoft,Government Cloud,95%
+Ministry of Digital,Tech Partner,Google Cloud,Government Cloud,95%
+Ministry of Digital,Tech Partner,AWS,Government Cloud,95%
+Ministry of Digital,Telecom Partner,Huawei,5G via DNB,95%
+Ministry of Digital,Telecom Partner,Ericsson,5G via DNB,95%
+Ministry of Digital,Telecom Partner,Nokia,5G via DNB,95%
+Ministry of Digital,Telecom Partner,ZTE,5G via DNB,90%
+Ministry of Digital,Local Telecom,Telekom Malaysia,Cloud MSP,95%
+Ministry of Digital,Local Telecom,CelcomDigi,Licensing,95%
+Ministry of Digital,MSP,AwanBiru Technology (Prestariang),Government Cloud MSP,90%
+Ministry of Digital,MSP,Enfrasys Solutions,Cloud MSP,85%
+Ministry of Digital,MSP,Cloud Connect,Cloud MSP,85%
+MCMC,Telecom Partner,Huawei,Training,95%
+MCMC,Telecom Partner,Ericsson,Infrastructure,95%
+MCMC,Telecom Partner,Nokia,Equipment,95%
+MCMC,Telecom Partner,ZTE,Systems,90%
+MCMC,Local Telecom,Telekom Malaysia,Licensing,95%
+MCMC,Local Telecom,CelcomDigi,Licensing,95%

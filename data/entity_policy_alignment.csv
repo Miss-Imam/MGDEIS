@@ -1,0 +1,19 @@
+entity,policy_name,launch_date,status,alignment_description,confidence_score,source
+MOHE,Malaysia Education Blueprint 2015-2025,2015,Active,Digital transformation of higher learning institutions,95%,MOHE official portal
+MOHE,Twelfth Malaysia Plan (2021-2025),2021,Active,Higher education reform and R&D priorities,95%,Malaysia Plan 2021 Report
+MOHE,Malaysia Higher Education Plan 2026-2035,2026,In Development,Smart campus and employability programs,90%,MOHE Roadmap 2026 draft
+MyDIGITAL,Malaysia Digital Economy Blueprint (MDEB),2021-02-19,Active,6 Thrusts for digital leadership by 2030,98%,MyDIGITAL Blueprint
+MyDIGITAL,National 4IR Policy,2021-07-01,Active,4 Thrusts for balanced and inclusive growth,98%,National 4IR Policy Document
+MyDIGITAL,National AI Action Plan,2021,Active,AI R&D coordination under NAIO,95%,MyDIGITAL Secretariat
+MyDIGITAL,Malaysia Centre for 4IR Collaboration,2023,Active,WEF-aligned AI and digital governance partnership,90%,WEF Malaysia Centre for 4IR
+MDEC,Malaysia Digital Initiative (Malaysia Digital),2021,Active,"RM42.58B investments, 17,495 jobs by Jun 2025",98%,MDEC Annual Report 2025
+MDEC,National e-Commerce Strategic Roadmap (NeSR) 2.0,2021,Active,890K+ e-commerce adopters exceeded target,95%,MITI & MDEC
+MDEC,Digital Creative Industry Blueprint (DICE),2022,Active,Strengthening digital content and creative exports,90%,MDEC DICE 2022
+MDEC,National AI Roadmap,2021,Active,Industry-driven AI adoption and SME readiness,90%,MDEC AI Framework
+Ministry of Digital,National Digital Economy Blueprint (MDEB),2021-02-19,Active,Governance and sectoral initiatives,98%,MyDIGITAL Blueprint
+Ministry of Digital,National AI Technology Action Plan 2026-2030,2024-12-12,In Development,National AI governance and infrastructure,95%,NAIO Malaysia 2024
+Ministry of Digital,National Cloud Computing Policy (NCCP),2021,Active,Cloud-first policy for public sector digitalisation,95%,KKD NCCP
+Ministry of Digital,GovTech Policy,2023,Active,Accelerating government digital service delivery,90%,GovTech Malaysia 2023
+Ministry of Digital,5G Deployment Strategy,2021,Active,82.4% coverage achieved by Jun 2025,95%,DNB Progress Report 2025
+MCMC,Jalinan Digital Negara (JENDELA),2020,Active,National broadband and 4G coverage expansion,95%,MCMC JENDELA Report
+MCMC,5G Deployment Strategy,2021,Active,Telecom regulations and rollout,95%,MCMC 5G Strategy Paper

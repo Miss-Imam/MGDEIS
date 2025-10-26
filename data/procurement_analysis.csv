@@ -1,0 +1,20 @@
+entity,procurement_category,known_vendors,estimated_value,status,tender_number,closing_date,confidence_score,last_updated
+MDEC,Security Services,Open to All Eligible Vendors,Undisclosed,ACTIVE TENDER - Open,MDEC-003/2025-OT,11-Nov-2025,100%,Oct 2025
+MDEC,"Cleaning, Landscaping & Related Services",Open to All Eligible Vendors,Undisclosed,ACTIVE TENDER - Open,MDEC-002/2025-OT,05-Nov-2025,100%,Oct 2025
+MDEC,Digital Investments,MIDA Joint (Digital Investment Office),RM70B+ Committed,Ongoing,N/A,N/A,98%,Oct 2025
+MyDIGITAL,Policy Coordination,"MDEC, CyberSecurity Malaysia, JDN",RM70B Investment Target,Ongoing,N/A,N/A,95%,Oct 2025
+MyDIGITAL,Digital Engagement Portals,Not Specified,Undisclosed,RFQ Process Ongoing,N/A,N/A,85%,Oct 2025
+MOHE,ICT Infrastructure & Hardware,Various Universities & IT Vendors,Undisclosed,Multiple RFQs Ongoing (Jan-Sep 2025),Various,Sep 2025,90%,Oct 2025
+MOHE,Network Security & NAC Solutions,Not Specified,Undisclosed,Tender Open (Jul-Sep 2025),Various,Sep 2025,90%,Oct 2025
+MOHE,Data Center Upgrade Private Cloud,Open to Eligible Vendors,Undisclosed,Active Tender via ePerolehan,QT250000000006371,23-Jun-2025,95%,Oct 2025
+MOHE,Learning Management Systems,"Microsoft, Google Workspace",Undisclosed,Ongoing (Upgrade Cycle),N/A,N/A,95%,Oct 2025
+MOHE,Pool Procurement (Pharmaceuticals),"Various (with MOH, Ministry of Defence)",RM1B+ (82 items),Ongoing (RM79.6M savings achieved),N/A,N/A,95%,Oct 2025
+MOHE,Research Collaboration,Industry Partners,Undisclosed,Ongoing,N/A,N/A,85%,Oct 2025
+Ministry of Digital,Government Cloud Services,"Microsoft, Google, AWS",Undisclosed,Mandatory Digital by 2025 - Ongoing,N/A,N/A,95%,Oct 2025
+Ministry of Digital,5G Infrastructure,"DNB, Huawei, Ericsson, Nokia, ZTE",Undisclosed,Ongoing (82.4% Coverage Achieved),N/A,N/A,95%,Oct 2025
+Ministry of Digital,Electronic Procurement Systems,Various Vendors,Undisclosed,Active Implementation (2025),N/A,N/A,90%,Oct 2025
+Ministry of Digital,Adobe License Software Renewal,Adobe,Undisclosed,Active Tender,KD/SH/P/2025/5,15-Oct-2025,95%,Oct 2025
+MCMC,Telecom Licensing & Enforcement,"CelcomDigi, Telekom Malaysia, Maxis, U Mobile, YTL",Undisclosed,Ongoing Regulatory Activities,N/A,N/A,95%,Oct 2025
+MCMC,5G Network Quality & Infrastructure,"DNB, Huawei, Ericsson, Nokia, ZTE",Undisclosed,Ongoing (Monitoring & Expansion),N/A,N/A,95%,Oct 2025
+MCMC,JENDELA Phase 2 Infrastructure,Multiple Telco Operators,Undisclosed,"Ongoing (1,560 PoPs completed)",N/A,N/A,95%,Oct 2025
+MCMC,Regulatory Enforcement & Compliance,Various Operators,RM1M+ penalties,"Ongoing (1,684 non-compliance cases)",N/A,N/A,90%,Oct 2025

@@ -1,0 +1,34 @@
+entity,reporting_level,position,name,key_initiatives_managed,confidence_score,source
+MOHE,Top,Minister,Datuk Seri Dr. Zambry Abdul Kadir,Digital transformation in higher education; Malaysia Education Blueprint 2015-2025,98%,Official MOHE Portal & Recent Events Oct 2025
+MOHE,Top,Deputy Minister,Datuk Ts. Mustapha Sakmud,Student programs approval; Higher education reforms,95%,Wikipedia & Bernama Oct 2025
+MOHE,Top,Secretary-General,Datuk Dr. Anesee Ibrahim,Department oversight; Budget 2026 allocations,95%,Official Announcement Mar 2025 & Bernama Oct 2025
+MOHE,Mid,Director General JPT,Datin Paduka Ir. Dr. Siti Hamisah Binti Tapsir,Public/Private Institutions Management,85%,Historical Record
+MOHE,Mid,Director General of Higher Education,Prof. Dr. Azlinda binti Azman,National Education Blueprint,95%,MOHE Official Announcement Jun 2025 & Multiple News Sources Sep 2025
+MOHE,Mid,Director Education Malaysia London,Prof. Madya Dr. Mohd Hanafi Ahmad Damanhuri,National Education Blueprint,95%,Education Malaysia London Official Website 2025
+MOHE,Mid,Director BPKI,Prof. Dr. Raha binti Abdul Rahim,Research and innovation,95%,Wikipedia Oct 2025
+MyDIGITAL,Top,CEO,Fabian Bigar,National 4IR Policy Implementation; AI Nation Vision,95%,GovInsider Oct 2025
+MyDIGITAL,Top,Founding CEO,Fabian Bigar,MyDIGITAL Blueprint Execution; Change Management,98%,GovInsider 2024
+MyDIGITAL,Top,Chairman,Gobind Singh Deo,Malaysia Digital Economy Blueprint; National 4IR Policy,95%,MyDIGITAL Official Website 2025
+MDEC,Top,CEO,Anuar Fariz Fadzil,Investor Engagements; Digital Content Festival,98%,Multiple Sources May-Oct 2025
+MDEC,Mid,SVP Industry & Ecosystem,Gopi Ganaselingam,MDEC Industry Divisions; Ecosystem Partnerships,95%,BusinessToday Jul 2025
+MDEC,Mid,Former CEO,Ts. Mahadhir Aziz,Pre-2024 Leadership,95%,LinkedIn 2024
+MDEC,Mid,Senior Vice President Corporate Affairs,Datuk Ts. Fadzli Abdul Wahit,Malaysia Digital; National AI Roadmap; GAIN; DE Rantau,95%,MDEC Official Website 2025
+MDEC,Mid,Vice President Digital Adoption,Ir. Wan Murdani Wan Mohamad,Malaysia Digital; National AI Roadmap; GAIN; DE Rantau,95%,Borneo Post Oct 2025 & relationships.csv October 2025
+MDEC,Mid,Vice President Corporate Finance,Nik Amalina Nik Zakaria,Malaysia Digital; National AI Roadmap; GAIN; DE Rantau,95%,MDEC Official Website 2025
+MDEC,Mid,Vice President Business Services,Razif Abd Aziz,Malaysia Digital; National AI Roadmap; GAIN; DE Rantau,95%,MDEC Official Website 2025
+MDEC,Mid,Vice President Corporate Services,Azlan Sharom,Malaysia Digital; National AI Roadmap; GAIN; DE Rantau,95%,MDEC Official Website 2025
+Ministry of Digital,Top,Minister,YB Tuan Gobind Singh Deo,Resilient Digital Malaysia; CyberDSA 2025,98%,Official Dec 2023 & Digital.gov.my Aug 2025
+Ministry of Digital,Top,Deputy Minister,YB Datuk Wilson Ugak Anak Kumbong,Policy Implementation Support,95%,Official Dec 2023
+Ministry of Digital,Top,Secretary-General,Datuk Haji Rodzi bin Md Saad,Panel Discussions; Digital Inclusion,95%,Official Ministry of Digital Website Oct 2025
+Ministry of Digital,Mid,Deputy Secretary-General (Strategic & Management),Shakib Ahmad Shakir Jamaluddin,National Digital Economy Blueprint; National AI Roadmap; Digital Rakyat Portal; AI for Rakyat; AI@JDN Chatbot,95%,Ministry of Digital Official & Wikipedia 2025
+Ministry of Digital,Mid,Deputy Secretary-General (Digital Development),Ma Sivanesan Marimuthu,National Digital Economy Blueprint; National AI Roadmap; Digital Rakyat Portal; AI for Rakyat; AI@JDN Chatbot,95%,Ministry of Digital Official & Wikipedia 2025
+Ministry of Digital,Mid,Director General National Digital Department,YBrs. Ts. Dr. Fazidah binti Abu Bakar,National Digital Economy Blueprint; National AI Roadmap; Digital Rakyat Portal; AI for Rakyat; AI@JDN Chatbot,95%,GovInsider Oct 2025 & relationships.csv October 2025
+MCMC,Top,Executive Chairman,Tan Sri Mohamad Salim bin Fateh Din,Regulatory Oversight; GSMA Agreements Jun 2025,98%,Wikipedia & Reappointment Mar 2025 & Bernama Oct 2025
+MCMC,Top,CTIO,Shamsul Izhan Abdul Majid,Innovation & Technology Standards,90%,LinkedIn & PDF Jun 2025
+MCMC,Top,Minister of Communications (Oversight),Ahmad Fahmi Mohamed Fadzil,Communications Policy,95%,Multiple Sources
+MCMC,Top,Commission Member,General Tan Sri Dato' Sri Zulkifeli bin Mohd Zin,Communications & Multimedia Act; AI Regulation Policy,95%,MCMC Wikipedia & Bernama Aug 2025
+MCMC,Top,Commission Member,Datuk Mohamad Fauzi bin Md Isa,Communications & Multimedia Act; AI Regulation Policy,95%,MCMC Official & Wikipedia 2025
+MCMC,Top,Commission Member,Datuk Muhammad Azmi bin Mohd Zain,Communications & Multimedia Act; AI Regulation Policy,95%,MCMC Announcement & Wikipedia 2025
+MCMC,Top,Commission Member,Prof Dr Mohamad Salmi bin Mohd Sohod,Communications & Multimedia Act; AI Regulation Policy,95%,MCMC Wikipedia & Official Sources 2025
+MCMC,Top,Commission Member,Derek John Fernandez,Communications & Multimedia Act; AI Regulation Policy,95%,MCMC Announcement Apr 2023 & Multiple Sources 2025
+MCMC,Mid,Chief Human Resource Officer,Dr. Murugappan Subramaniam,Communications & Multimedia Act; AI Regulation Policy,95%,MCMC LinkedIn & HR Sources 2025

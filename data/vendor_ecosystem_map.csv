@@ -1,0 +1,9 @@
+entity,sector,vendor,relationship,confidence_score,source
+MOHE,Tech,Microsoft Malaysia,EdTech & Learning Systems,95%,"Microsoft – Empowering Malaysia’s education community with remote learning (Apr 3 2020); Microsoft – Building the foundations for Malaysia’s AI-enabled economy (May 22 2025)" 
+MyDIGITAL,Finance,Bursa Malaysia,Digital Economy Partnerships,95%,"Bursa Malaysia – corporate partnership disclosures; nodes + relationships dataset internal mapping"
+MyDIGITAL,Strategic,UNDP Malaysia,Sustainable Development & AI Collaboration,90%,"UNDP Malaysia – MyDIGITAL Corporation and UNDP Malaysia forge partnership to drive digital inclusion (Oct 10 2025)" 
+MyDIGITAL,Strategic,World Economic Forum,4IR Partnership,95%,"WEF Malaysia Centre for 4IR press release; nodes + relationships dataset internal mapping"
+MDEC,Academic,Zhejiang University,AI Research Collaboration,85%,"nodes + relationships dataset internal mapping; public disclosures of MDEC research tie-ups"
+Ministry of Digital,Tech,Microsoft Malaysia,GovTech Cloud / Productivity,95%,"Microsoft – Government of Malaysia Builds Resilience by Adopting GovTech in Partnership with Microsoft (May 9 2022)" 
+Ministry of Digital,Tech,Google,Cloud & AI Skilling,95%,"Reuters – Google to invest $2 billion in data centre and cloud services in Malaysia (May 30 2024)"
+Ministry of Digital,Development,UNDP Malaysia,Digital Inclusion & Policy Support,90%,"UNDP Malaysia – MyDIGITAL Corporation and UNDP Malaysia partnership (Oct 10 2025)"
