@@ -671,108 +671,112 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
     st.markdown("---")
     st.markdown("<h4 style='text-align: center;'>Partnership Network</h4>", unsafe_allow_html=True)
 
-    if not partnership_df.empty and {"entity_key", "partner_name"}.issubset(partnership_df.columns):
-        flows = (partnership_df
-                .dropna(subset=["entity_key", "partner_name"])
-                .groupby(["entity_key", "partner_name"])
-                .size()
-                .reset_index(name="value"))
+    # Center align the Sankey diagram using columns
+    col_left, col_center, col_right = st.columns([0.5, 10, 0.5])
 
-        if not flows.empty:
-            # Keep entities (left) and partners (right) separated
-            left_entities = flows["entity_key"].astype(str).unique().tolist()
-            right_partners = flows["partner_name"].astype(str).unique().tolist()
-            nodes = left_entities + right_partners
+    with col_center:
+        if not partnership_df.empty and {"entity_key", "partner_name"}.issubset(partnership_df.columns):
+            flows = (partnership_df
+                    .dropna(subset=["entity_key", "partner_name"])
+                    .groupby(["entity_key", "partner_name"])
+                    .size()
+                    .reset_index(name="value"))
 
-            # Indices
-            idx = {n: i for i, n in enumerate(nodes)}
+            if not flows.empty:
+                # Keep entities (left) and partners (right) separated
+                left_entities = flows["entity_key"].astype(str).unique().tolist()
+                right_partners = flows["partner_name"].astype(str).unique().tolist()
+                nodes = left_entities + right_partners
 
-            source = flows["entity_key"].astype(str).map(idx).tolist()
-            target = flows["partner_name"].astype(str).map(idx).tolist()
-            value = flows["value"].astype(int).tolist()
+                # Indices
+                idx = {n: i for i, n in enumerate(nodes)}
 
-            # Assign specific colors to known entities, then use palette for others
-            known_entity_colors = {
-                "MDEC": "#F59E0B",           # Orange
-                "MCMC": "#8A63FF",           # Purple
-                "MINISTRYOFDIGITAL": "#F45AA4",  # Pink
-                "MOD": "#F45AA4",            # Pink (same as Ministry of Digital)
-                "MOHE": "#10B981",           # Green
-                "MYDIGITAL": "#3B82F6",      # Blue
-            }
+                source = flows["entity_key"].astype(str).map(idx).tolist()
+                target = flows["partner_name"].astype(str).map(idx).tolist()
+                value = flows["value"].astype(int).tolist()
 
-            # Fallback palette for any other entities
-            palette = [
-                "#6366F1", "#EC4899", "#06B6D4", "#84CC16",
-                "#EF4444", "#14B8A6", "#A855F7", "#22C55E", "#0EA5E9"
-            ]
+                # Assign specific colors to known entities, then use palette for others
+                known_entity_colors = {
+                    "MDEC": "#F59E0B",           # Orange
+                    "MCMC": "#8A63FF",           # Purple
+                    "MINISTRYOFDIGITAL": "#F45AA4",  # Pink
+                    "MOD": "#F45AA4",            # Pink (same as Ministry of Digital)
+                    "MOHE": "#10B981",           # Green
+                    "MYDIGITAL": "#3B82F6",      # Blue
+                }
 
-            entity_colors = {}
-            palette_index = 0
-            for ent in left_entities:
-                if ent in known_entity_colors:
-                    entity_colors[ent] = known_entity_colors[ent]
-                else:
-                    entity_colors[ent] = palette[palette_index % len(palette)]
-                    palette_index += 1
+                # Fallback palette for any other entities
+                palette = [
+                    "#6366F1", "#EC4899", "#06B6D4", "#84CC16",
+                    "#EF4444", "#14B8A6", "#A855F7", "#22C55E", "#0EA5E9"
+                ]
 
-            # Partner nodes: subtle grey so entity colors pop
-            partner_color = "rgba(107, 114, 128, 0.75)"
+                entity_colors = {}
+                palette_index = 0
+                for ent in left_entities:
+                    if ent in known_entity_colors:
+                        entity_colors[ent] = known_entity_colors[ent]
+                    else:
+                        entity_colors[ent] = palette[palette_index % len(palette)]
+                        palette_index += 1
 
-            node_colors = [entity_colors[e] for e in left_entities] + [partner_color] * len(right_partners)
+                # Partner nodes: subtle grey so entity colors pop
+                partner_color = "rgba(107, 114, 128, 0.75)"
 
-            # Link color strategy: color links by their entity (left node) with alpha
-            link_colors = []
-            for s, v in zip(source, value):
-                left_name = nodes[s]
-                base = entity_colors.get(left_name, "#6366F1")
-                # apply alpha ~0.35
-                # convert hex to rgba
-                if base.startswith("#") and len(base) == 7:
-                    r = int(base[1:3], 16)
-                    g = int(base[3:5], 16)
-                    b = int(base[5:7], 16)
-                    link_colors.append(f"rgba({r},{g},{b},0.35)")
-                else:
-                    link_colors.append("rgba(99,102,241,0.35)")
+                node_colors = [entity_colors[e] for e in left_entities] + [partner_color] * len(right_partners)
 
-            # Don't wrap labels - keep them clean and readable
-            node_labels = left_entities + right_partners
+                # Link color strategy: color links by their entity (left node) with alpha
+                link_colors = []
+                for s, v in zip(source, value):
+                    left_name = nodes[s]
+                    base = entity_colors.get(left_name, "#6366F1")
+                    # apply alpha ~0.35
+                    # convert hex to rgba
+                    if base.startswith("#") and len(base) == 7:
+                        r = int(base[1:3], 16)
+                        g = int(base[3:5], 16)
+                        b = int(base[5:7], 16)
+                        link_colors.append(f"rgba({r},{g},{b},0.35)")
+                    else:
+                        link_colors.append("rgba(99,102,241,0.35)")
 
-            fig = go.Figure(data=[go.Sankey(
-                arrangement="snap",
-                node=dict(
-                    label=node_labels,
-                    pad=20,
-                    thickness=20,
-                    line=dict(color="rgba(0,0,0,0.2)", width=1),
-                    color=node_colors
-                ),
-                link=dict(
-                    source=source,
-                    target=target,
-                    value=value,
-                    color=link_colors
+                # Don't wrap labels - keep them clean and readable
+                node_labels = left_entities + right_partners
+
+                fig = go.Figure(data=[go.Sankey(
+                    arrangement="snap",
+                    node=dict(
+                        label=node_labels,
+                        pad=20,
+                        thickness=20,
+                        line=dict(color="rgba(0,0,0,0.2)", width=1),
+                        color=node_colors
+                    ),
+                    link=dict(
+                        source=source,
+                        target=target,
+                        value=value,
+                        color=link_colors
+                    )
+                )])
+
+                # Clean font settings for better readability
+                fig.update_layout(
+                    font=dict(
+                        family="Arial, sans-serif",
+                        size=11,
+                        color="#1F2937"
+                    ),
+                    height=500,
+                    margin=dict(l=10, r=150, t=20, b=20),
                 )
-            )])
 
-            # Clean font settings for better readability
-            fig.update_layout(
-                font=dict(
-                    family="Arial, sans-serif",
-                    size=11,
-                    color="#1F2937"
-                ),
-                height=500,
-                margin=dict(l=10, r=150, t=20, b=20),
-            )
-
-            # Render full width
-            st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+                # Render full width
+                st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+            else:
+                st.info("No partnership flows available")
         else:
-            st.info("No partnership flows available")
-    else:
-        st.info("Insufficient columns for partnership network (need entity_key & partner_name)")
+            st.info("Insufficient columns for partnership network (need entity_key & partner_name)")
 
     # ----------------------------------------------------------------------------
     # 7) Procurement Categories
