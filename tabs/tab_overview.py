@@ -691,15 +691,30 @@ def render_overview_tab(entities_df, people_df, partners_df, has_csv_data, resea
             target = flows["partner_name"].astype(str).map(idx).tolist()
             value = flows["value"].astype(int).tolist()
 
-            # Assign a unique color to each entity (left side)
+            # Assign specific colors to known entities, then use palette for others
+            known_entity_colors = {
+                "MDEC": "#F59E0B",           # Orange
+                "MCMC": "#8A63FF",           # Purple
+                "MINISTRYOFDIGITAL": "#F45AA4",  # Pink
+                "MOD": "#F45AA4",            # Pink (same as Ministry of Digital)
+                "MOHE": "#10B981",           # Green
+                "MYDIGITAL": "#3B82F6",      # Blue
+            }
+
+            # Fallback palette for any other entities
             palette = [
-                "#8A63FF", "#F45AA4", "#F39A0D", "#10B981", "#3B82F6",
-                "#6366F1", "#EC4899", "#F59E0B", "#06B6D4", "#84CC16",
+                "#6366F1", "#EC4899", "#06B6D4", "#84CC16",
                 "#EF4444", "#14B8A6", "#A855F7", "#22C55E", "#0EA5E9"
             ]
+
             entity_colors = {}
-            for i, ent in enumerate(left_entities):
-                entity_colors[ent] = palette[i % len(palette)]
+            palette_index = 0
+            for ent in left_entities:
+                if ent in known_entity_colors:
+                    entity_colors[ent] = known_entity_colors[ent]
+                else:
+                    entity_colors[ent] = palette[palette_index % len(palette)]
+                    palette_index += 1
 
             # Partner nodes: subtle grey so entity colors pop
             partner_color = "rgba(107, 114, 128, 0.75)"
