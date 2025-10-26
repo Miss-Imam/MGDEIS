@@ -1,8 +1,17 @@
 from neo4j import GraphDatabase
 import pandas as pd
+import os
+import streamlit as st
 
 class Neo4jConnector:
-    def __init__(self, uri="neo4j+s://8707aa85.databases.neo4j.io", user="neo4j", password="h1sc_XQWc16ERF0oT_B8y59hBhJ1KTvsZ5t91qtk-Ns"):
+    def __init__(self, uri=None, user=None, password=None):
+        # Try to get credentials from Streamlit secrets first, then environment variables
+        if uri is None:
+            uri = st.secrets.get("neo4j", {}).get("uri") or os.getenv("NEO4J_URI")
+        if user is None:
+            user = st.secrets.get("neo4j", {}).get("user") or os.getenv("NEO4J_USER")
+        if password is None:
+            password = st.secrets.get("neo4j", {}).get("password") or os.getenv("NEO4J_PASSWORD")
 
         self.driver = GraphDatabase.driver(uri, auth=(user, password))
     
