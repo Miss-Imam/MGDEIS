@@ -23,7 +23,7 @@ from tabs.tab_documentation import render_documentation_tab
 
 # Page config
 st.set_page_config(
-    page_title="MGDEI",
+    page_title="MGDEIS",
     page_icon="🇲🇾",
     layout="wide",
     initial_sidebar_state="collapsed"
